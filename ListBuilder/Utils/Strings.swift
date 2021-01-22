@@ -21,8 +21,8 @@ extension String{
     static let OKAY                     = "Okay"
 
     //Food Formatting        //Food Formatting
-    static let CALORIE_FORMAT           = "%@ cals"
-    static let GRAM_FORMAT              = "%@g"
+    static let CALORIE_FORMAT           = "%.1f cals"
+    static let GRAM_FORMAT              = "%.1fg"
 
 
     //Date Formatting        //Date Formatting
