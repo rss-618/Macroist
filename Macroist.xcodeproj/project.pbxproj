@@ -38,7 +38,7 @@
 		E8AD753725BA3CE0000CC23F /* FoodRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
 		E8AD753B25BA7C4B000CC23F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E8AD753E25BA8141000CC23F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		E8ECAB9C25B21D040028A705 /* ListBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8ECAB9C25B21D040028A705 /* Macroist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macroist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8ECAB9F25B21D040028A705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8ECABA125B21D040028A705 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E8ECABA325B21D040028A705 /* UserCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		E8ECAB9325B21D040028A705 = {
 			isa = PBXGroup;
 			children = (
-				E8ECAB9E25B21D040028A705 /* ListBuilder */,
+				E8ECAB9E25B21D040028A705 /* Macroist */,
 				E8ECAB9D25B21D040028A705 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,12 +91,12 @@
 		E8ECAB9D25B21D040028A705 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E8ECAB9C25B21D040028A705 /* ListBuilder.app */,
+				E8ECAB9C25B21D040028A705 /* Macroist.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E8ECAB9E25B21D040028A705 /* ListBuilder */ = {
+		E8ECAB9E25B21D040028A705 /* Macroist */ = {
 			isa = PBXGroup;
 			children = (
 				E8AD754225BA8595000CC23F /* Repos */,
@@ -111,7 +111,7 @@
 				E8ECABA825B21D060028A705 /* Assets.xcassets */,
 				E8ECABAD25B21D070028A705 /* Info.plist */,
 			);
-			path = ListBuilder;
+			path = Macroist;
 			sourceTree = "<group>";
 		};
 		E8ECABB825B7EB560028A705 /* Model */ = {
@@ -157,9 +157,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E8ECAB9B25B21D040028A705 /* ListBuilder */ = {
+		E8ECAB9B25B21D040028A705 /* Macroist */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8ECABB025B21D070028A705 /* Build configuration list for PBXNativeTarget "ListBuilder" */;
+			buildConfigurationList = E8ECABB025B21D070028A705 /* Build configuration list for PBXNativeTarget "Macroist" */;
 			buildPhases = (
 				E8ECAB9825B21D040028A705 /* Sources */,
 				E8ECAB9925B21D040028A705 /* Frameworks */,
@@ -169,9 +169,9 @@
 			);
 			dependencies = (
 			);
-			name = ListBuilder;
-			productName = ListBuilder;
-			productReference = E8ECAB9C25B21D040028A705 /* ListBuilder.app */;
+			name = Macroist;
+			productName = Macroist;
+			productReference = E8ECAB9C25B21D040028A705 /* Macroist.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E8ECAB9725B21D040028A705 /* Build configuration list for PBXProject "ListBuilder" */;
+			buildConfigurationList = E8ECAB9725B21D040028A705 /* Build configuration list for PBXProject "Macroist" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -201,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E8ECAB9B25B21D040028A705 /* ListBuilder */,
+				E8ECAB9B25B21D040028A705 /* Macroist */,
 			);
 		};
 /* End PBXProject section */
@@ -388,12 +388,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XGJ29R7G4Y;
-				INFOPLIST_FILE = ListBuilder/Info.plist;
+				INFOPLIST_FILE = Macroist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rss618.ListBuilder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rss618.Macroist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -407,12 +407,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XGJ29R7G4Y;
-				INFOPLIST_FILE = ListBuilder/Info.plist;
+				INFOPLIST_FILE = Macroist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rss618.ListBuilder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rss618.Macroist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -422,7 +422,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E8ECAB9725B21D040028A705 /* Build configuration list for PBXProject "ListBuilder" */ = {
+		E8ECAB9725B21D040028A705 /* Build configuration list for PBXProject "Macroist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8ECABAE25B21D070028A705 /* Debug */,
@@ -431,7 +431,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8ECABB025B21D070028A705 /* Build configuration list for PBXNativeTarget "ListBuilder" */ = {
+		E8ECABB025B21D070028A705 /* Build configuration list for PBXNativeTarget "Macroist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8ECABB125B21D070028A705 /* Debug */,

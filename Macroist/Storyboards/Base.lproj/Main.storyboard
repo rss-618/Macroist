@@ -13,7 +13,7 @@
         <!--User Creation View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="User Creation View" customClass="UserCreationViewController" customModule="ListBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="User Creation View" customClass="UserCreationViewController" customModule="Macroist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--Main Menu View-->
         <scene sceneID="sAG-kQ-leT">
             <objects>
-                <viewController storyboardIdentifier="mainViewController" id="25v-ed-Hu9" userLabel="Main Menu View" customClass="MainViewController" customModule="ListBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainViewController" id="25v-ed-Hu9" userLabel="Main Menu View" customClass="MainViewController" customModule="Macroist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XBs-4N-5Ct">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +349,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chz-sg-5pa"/>
-                                    <segue destination="MMI-PZ-9v2" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="6V6-VH-GMb"/>
+                                    <segue destination="MMI-PZ-9v2" kind="presentation" modalPresentationStyle="fullScreen" id="6V6-VH-GMb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -388,7 +388,7 @@
         <!--Add Meal Controller-->
         <scene sceneID="JaJ-Xo-Tsn">
             <objects>
-                <viewController id="MMI-PZ-9v2" userLabel="Add Meal Controller" customClass="NewMealViewController" customModule="ListBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MMI-PZ-9v2" userLabel="Add Meal Controller" customClass="NewMealViewController" customModule="Macroist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OQ1-2T-fj6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
