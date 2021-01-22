@@ -349,7 +349,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chz-sg-5pa"/>
-                                    <segue destination="MMI-PZ-9v2" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="6V6-VH-GMb"/>
+                                    <segue destination="MMI-PZ-9v2" kind="presentation" modalPresentationStyle="fullScreen" id="6V6-VH-GMb"/>
                                 </connections>
                             </button>
                         </subviews>
