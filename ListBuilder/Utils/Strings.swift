@@ -17,11 +17,16 @@ extension String{
     
     //Input Error
     static let MISSING_INPUT            = "Make sure all text fields are filled."
+    static let MISSING_NAME             = "Make sure name field is filled."
     static let OKAY                     = "Okay"
-    //Food Formatting
+
+    //Food Formatting        //Food Formatting
     static let CALORIE_FORMAT           = "%@ cals"
     static let GRAM_FORMAT              = "%@g"
-    
-    //Date Formatting
+
+
+    //Date Formatting        //Date Formatting
     static let DATE_FORMAT              = "MM/dd/yyyy"
-}
+    
+    //General
+    static let EMPTY                    = ""}
