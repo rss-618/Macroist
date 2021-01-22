@@ -48,24 +48,27 @@ class NewMealViewController: UIViewController{
     
     @IBAction func donePressed(_ sender: Any) {
         // Store Into persistant info
-        if let name = foodNameInput.text, let calories = Double(caloriesInput.text!),
-           let protein = Double(proteinInput.text!), let carbs = Double(carbsInput.text!),
-           let fat = Double(fatInput.text!){
+        let name = foodNameInput.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if name != .EMPTY{
+            let calories = Double(caloriesInput.text!) ?? 0.0
+            let protein = Double(proteinInput.text!) ?? 0.0
+            let carbs = Double(carbsInput.text!) ?? 0.0
+            let fat = Double(fatInput.text!) ?? 0.0
             let food:Food = Food(name: name,
                                  calories: calories,
                                  protein: protein,
                                  carbs: carbs,
                                  fat: fat)
-            MainViewController.staticFood.append(food)
-            let result = FoodRepo.saveFoodItem(food: food)
-            if result == true{
-            //if true{
+            MainViewController.foodItems.append(food)
+            //let result = FoodRepo.saveFoodItem(food: food)
+            //if result == true{
+            if true{
                 navigationController?.popViewController(animated: true)
                 dismiss(animated: true, completion: nil)
             }
         }
         else{
-            let alert = UIAlertController(title: .MISSING_INPUT, message: nil, preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: .MISSING_NAME, message: nil, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: .OKAY, style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

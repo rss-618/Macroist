@@ -18,8 +18,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var totalCarbs       : UILabel!
     @IBOutlet weak var totalFat         : UILabel!
     //for testing stuff
-    static var staticFood:[Food] = []
-    var foodItems    : [Food] = []
+    //static var staticFood:[Food] = []
+    static var foodItems    : [Food] = []
     var dailySum     : Food = Food()
     
     override func viewDidLoad() {
@@ -29,9 +29,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: "foodItem", bundle: nil), forCellReuseIdentifier: "FoodItem")
                self.tableView.dataSource = self
                self.tableView.delegate   = self
-        // TODO: Remove when single delete functionality is made
-        FoodRepo.deleteAllFoodRecords()
-        
+
         configureButton()
         addClickListeners()
         getFoodItems()
@@ -43,11 +41,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func addFoodItem(food: Food){
-        foodItems.append(food)
+        MainViewController.foodItems.append(food)
         calcAndUpdateNutritionSum()
     }
     func getFoodItems(){
-        foodItems = FoodRepo.retrieveSavedFood()!
+        //MainViewController.foodItems = FoodRepo.retrieveSavedFood()!
         //foodItems = MainViewController.staticFood
         tableView.reloadData()
         calcAndUpdateNutritionSum()
@@ -67,7 +65,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func calcAndUpdateNutritionSum(){
         dailySum = Food()
-        for food in foodItems{
+        for food in MainViewController.foodItems{
             dailySum.calories += food.calories
             dailySum.protein  += food.protein
             dailySum.carbs    += food.carbs
@@ -87,7 +85,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK:- UITableView DataSource & Delegate
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         calcAndUpdateNutritionSum()
-          return self.foodItems.count
+          return MainViewController.foodItems.count
       }
 
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,11 +93,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodItem") as! FoodCell
 
         // allocate data to cell
-        cell.foodTitle.text     = String(foodItems[indexPath.row].name)
-        cell.caloriesText.text  = String(format: .CALORIE_FORMAT, String(foodItems[indexPath.row].calories))
-        cell.proteinText.text   = String(format: .GRAM_FORMAT, String(foodItems[indexPath.row].protein))
-        cell.carbsText.text     = String(format: .GRAM_FORMAT, String(foodItems[indexPath.row].carbs))
-        cell.fatText.text       = String(format: .GRAM_FORMAT, String(foodItems[indexPath.row].fat))
+        cell.foodTitle.text     = String(MainViewController.foodItems[indexPath.row].name)
+        cell.caloriesText.text  = String(format: .CALORIE_FORMAT, String(MainViewController.foodItems[indexPath.row].calories))
+        cell.proteinText.text   = String(format: .GRAM_FORMAT, String(MainViewController.foodItems[indexPath.row].protein))
+        cell.carbsText.text     = String(format: .GRAM_FORMAT, String(MainViewController.foodItems[indexPath.row].carbs))
+        cell.fatText.text       = String(format: .GRAM_FORMAT, String(MainViewController.foodItems[indexPath.row].fat))
 
         return cell
       }
@@ -117,7 +115,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
             // delete the item here
-            self.foodItems.remove(at: indexPath.row)
+            MainViewController.foodItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
                 completionHandler(true)
         }
