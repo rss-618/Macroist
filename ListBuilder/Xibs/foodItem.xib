@@ -20,30 +20,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjZ-XL-cec">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="75"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="14" id="hvA-dn-1xI">
+                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" id="hvA-dn-1xI">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-sK-1KE" userLabel="Calories">
-                                        <rect key="frame" x="0.0" y="40" width="97" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="40" width="107.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGray6Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22g" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjl-ua-7fS" userLabel="Protein">
-                                        <rect key="frame" x="111" y="40" width="97" height="20.5"/>
+                                        <rect key="frame" x="107.5" y="40" width="107.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGray6Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55g" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY6-ba-7Lt" userLabel="Carbs">
-                                        <rect key="frame" x="222" y="40" width="97" height="20.5"/>
+                                        <rect key="frame" x="215" y="40" width="107.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGray6Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2g" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcC-GT-RmY" userLabel="Fat">
-                                        <rect key="frame" x="333" y="40" width="97" height="20.5"/>
+                                        <rect key="frame" x="322.5" y="40" width="107.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGray6Color"/>
                                         <nil key="highlightedColor"/>

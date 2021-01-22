@@ -14,6 +14,8 @@
 		E8AD752D25BA19BF000CC23F /* NewMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD752C25BA19BF000CC23F /* NewMealViewController.swift */; };
 		E8AD753525BA3001000CC23F /* FoodData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8AD753325BA3001000CC23F /* FoodData.xcdatamodeld */; };
 		E8AD753825BA3CE0000CC23F /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD753725BA3CE0000CC23F /* FoodRepository.swift */; };
+		E8AD753C25BA7C4B000CC23F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD753B25BA7C4B000CC23F /* Extensions.swift */; };
+		E8AD753F25BA8141000CC23F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD753E25BA8141000CC23F /* Helper.swift */; };
 		E8ECABA025B21D040028A705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAB9F25B21D040028A705 /* AppDelegate.swift */; };
 		E8ECABA225B21D040028A705 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECABA125B21D040028A705 /* SceneDelegate.swift */; };
 		E8ECABA425B21D040028A705 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECABA325B21D040028A705 /* UserCreationViewController.swift */; };
@@ -34,6 +36,8 @@
 		E8AD752C25BA19BF000CC23F /* NewMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMealViewController.swift; sourceTree = "<group>"; };
 		E8AD753425BA3001000CC23F /* FoodData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodData.xcdatamodel; sourceTree = "<group>"; };
 		E8AD753725BA3CE0000CC23F /* FoodRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
+		E8AD753B25BA7C4B000CC23F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E8AD753E25BA8141000CC23F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		E8ECAB9C25B21D040028A705 /* ListBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8ECAB9F25B21D040028A705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8ECABA125B21D040028A705 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 			path = Xibs;
 			sourceTree = "<group>";
 		};
+		E8AD754225BA8595000CC23F /* Repos */ = {
+			isa = PBXGroup;
+			children = (
+				E8AD753725BA3CE0000CC23F /* FoodRepository.swift */,
+			);
+			path = Repos;
+			sourceTree = "<group>";
+		};
 		E8ECAB9325B21D040028A705 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +99,7 @@
 		E8ECAB9E25B21D040028A705 /* ListBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				E8AD754225BA8595000CC23F /* Repos */,
 				E8AD751F25B91870000CC23F /* Xibs */,
 				E8ECABD425B902020028A705 /* Storyboards */,
 				E8ECABCE25B8FF900028A705 /* Utils */,
@@ -97,7 +110,6 @@
 				E8ECABA125B21D040028A705 /* SceneDelegate.swift */,
 				E8ECABA825B21D060028A705 /* Assets.xcassets */,
 				E8ECABAD25B21D070028A705 /* Info.plist */,
-				E8AD753725BA3CE0000CC23F /* FoodRepository.swift */,
 			);
 			path = ListBuilder;
 			sourceTree = "<group>";
@@ -127,6 +139,8 @@
 				E8ECABB525B7EAC60028A705 /* AppConstants.swift */,
 				E8ECABCF25B8FFA30028A705 /* Strings.swift */,
 				E8AD752925B932BA000CC23F /* OriginalImageRender.swift */,
+				E8AD753B25BA7C4B000CC23F /* Extensions.swift */,
+				E8AD753E25BA8141000CC23F /* Helper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -213,6 +227,7 @@
 			files = (
 				E8AD752D25BA19BF000CC23F /* NewMealViewController.swift in Sources */,
 				E8ECABA425B21D040028A705 /* UserCreationViewController.swift in Sources */,
+				E8AD753F25BA8141000CC23F /* Helper.swift in Sources */,
 				E8ECABA025B21D040028A705 /* AppDelegate.swift in Sources */,
 				E8ECABA225B21D040028A705 /* SceneDelegate.swift in Sources */,
 				E8ECABC625B7F3EB0028A705 /* MainViewController.swift in Sources */,
@@ -224,6 +239,7 @@
 				E8ECABB625B7EAC60028A705 /* AppConstants.swift in Sources */,
 				E8AD752725B91F9E000CC23F /* FoodCell.swift in Sources */,
 				E8ECABD025B8FFA30028A705 /* Strings.swift in Sources */,
+				E8AD753C25BA7C4B000CC23F /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

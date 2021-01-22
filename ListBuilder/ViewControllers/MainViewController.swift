@@ -25,9 +25,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
         self.tableView.register(UINib(nibName: "foodItem", bundle: nil), forCellReuseIdentifier: "FoodItem")
                self.tableView.dataSource = self
                self.tableView.delegate   = self
+        // TODO: Remove when single delete functionality is made
+        FoodRepo.deleteAllFoodRecords()
+        
         configureButton()
         addClickListeners()
         getFoodItems()

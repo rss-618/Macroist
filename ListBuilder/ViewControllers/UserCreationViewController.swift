@@ -16,6 +16,7 @@ class UserCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
         configureButton()
         configureFields()
     }
@@ -51,10 +52,9 @@ class UserCreationViewController: UIViewController {
                 return
             }
         }
-        let alert = UIAlertController(title: .DEFAULT_ERROR_TITLE, message: .DEFAULT_ERROR_MESSAGE, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        let alert = UIAlertController(title: .DEFAULT_ERROR_TITLE, message: .MISSING_INPUT, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: .OKAY, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     func redirectToMain(){
