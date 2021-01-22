@@ -71,10 +71,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             dailySum.carbs    += food.carbs
             dailySum.fat      += food.fat
         }
-        totalCalories.text  = String(format: .CALORIE_FORMAT, String(dailySum.calories))
-        totalProtein.text   = String(format: .GRAM_FORMAT, String(dailySum.protein))
-        totalCarbs.text     = String(format: .GRAM_FORMAT, String(dailySum.carbs))
-        totalFat.text       = String(format: .GRAM_FORMAT, String(dailySum.fat))
+        totalCalories.text  = String(format: .CALORIE_FORMAT, dailySum.calories)
+        totalProtein.text   = String(format: .GRAM_FORMAT, dailySum.protein)
+        totalCarbs.text     = String(format: .GRAM_FORMAT, dailySum.carbs)
+        totalFat.text       = String(format: .GRAM_FORMAT, dailySum.fat)
         
     }
     // Maybe make an acutal profile page then make that be able to display info then
@@ -94,10 +94,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // allocate data to cell
         cell.foodTitle.text     = String(MainViewController.foodItems[indexPath.row].name)
-        cell.caloriesText.text  = String(format: .CALORIE_FORMAT, String(MainViewController.foodItems[indexPath.row].calories))
-        cell.proteinText.text   = String(format: .GRAM_FORMAT, String(MainViewController.foodItems[indexPath.row].protein))
-        cell.carbsText.text     = String(format: .GRAM_FORMAT, String(MainViewController.foodItems[indexPath.row].carbs))
-        cell.fatText.text       = String(format: .GRAM_FORMAT, String(MainViewController.foodItems[indexPath.row].fat))
+        cell.caloriesText.text  = String(format: .CALORIE_FORMAT, MainViewController.foodItems[indexPath.row].calories)
+        cell.proteinText.text   = String(format: .GRAM_FORMAT, MainViewController.foodItems[indexPath.row].protein)
+        cell.carbsText.text     = String(format: .GRAM_FORMAT, MainViewController.foodItems[indexPath.row].carbs)
+        cell.fatText.text       = String(format: .GRAM_FORMAT, MainViewController.foodItems[indexPath.row].fat)
 
         return cell
       }
