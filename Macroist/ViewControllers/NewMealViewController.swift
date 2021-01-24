@@ -22,10 +22,6 @@ class NewMealViewController: UIViewController{
         // Do any additional setup after loading the view.
         configureButtons()
         self.hideKeyboardWhenTappedAround()
-        for food in FoodRepo.retrieveSavedFood()!{
-            print(food.toString())
-        }
-        
     }
     
     func configureButtons(){
@@ -55,6 +51,7 @@ class NewMealViewController: UIViewController{
             let carbs = Double(carbsInput.text!) ?? 0.0
             let fat = Double(fatInput.text!) ?? 0.0
             let food:Food = Food(name: name,
+                                 date: Helper.getCurrentDate(),
                                  calories: calories,
                                  protein: protein,
                                  carbs: carbs,

@@ -17,8 +17,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var totalProtein     : UILabel!
     @IBOutlet weak var totalCarbs       : UILabel!
     @IBOutlet weak var totalFat         : UILabel!
-    //for testing stuff
-    static var staticFood:[Food] = []
+    
     var foodItems    : [Food] = []
     var dailySum     : Food = Food()
     
@@ -29,9 +28,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: "foodItem", bundle: nil), forCellReuseIdentifier: "FoodItem")
                self.tableView.dataSource = self
                self.tableView.delegate   = self
-        // TODO: Remove when single delete functionality is made
-        FoodRepo.deleteAllFoodRecords()
-        
         configureButton()
         addClickListeners()
         getFoodItems()
@@ -48,7 +44,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func getFoodItems(){
         foodItems = FoodRepo.retrieveSavedFood()!
-        //foodItems = MainViewController.staticFood
         tableView.reloadData()
         calcAndUpdateNutritionSum()
     }
@@ -104,21 +99,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
       }
     
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            foodItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-        
-    }*/
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
             -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
             // delete the item here
-            self.foodItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+                if !FoodRepo.deleteFood(food: self.foodItems[indexPath.row])!{
+                    let alert = UIAlertController(title: .ERROR_DELETING, message: nil, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: .OKAY, style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                self.foodItems.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 completionHandler(true)
         }
         let cgImageX =  UIImage(systemName: "trash")?.cgImage

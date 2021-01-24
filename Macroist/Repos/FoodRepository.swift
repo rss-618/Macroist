@@ -15,7 +15,8 @@ class FoodRepo {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let foodItem = NSEntityDescription.insertNewObject(forEntityName: "Food", into: context)
-        foodItem.setValue(Helper.getCurrentDate(), forKey:"date")
+        foodItem.setValue(food.uniqueID, forKey:"uniqueID")
+        foodItem.setValue(food.date, forKey:"date")
         foodItem.setValue(food.name, forKey: "name")
         foodItem.setValue(food.calories, forKey: "calories")
         foodItem.setValue(food.protein, forKey: "protein")
@@ -43,11 +44,13 @@ class FoodRepo {
                 for result in results as! [NSManagedObject] {
                     guard let name = result.value(forKey: "name") as? String else { return nil }
                     guard let date = result.value(forKey: "date") as? String else { return nil }
+                    guard let uniqueID = result.value(forKey: "uniqueID") as? String else { return nil }
                     guard let calories = result.value(forKey: "calories") as? Double else { return nil }
                     guard let protein = result.value(forKey: "protein") as? Double else { return nil }
                     guard let carbs = result.value(forKey: "carbs") as? Double else { return nil }
                     guard let fat = result.value(forKey: "fat") as? Double else { return nil }
-                    let foodItem = Food(name: name,
+                    let foodItem = Food(uniqueID: uniqueID,
+                                        name: name,
                                         date: date,
                                         calories: calories,
                                         protein: protein,
@@ -85,8 +88,36 @@ class FoodRepo {
 
         } catch {
             // Error Handling
-            // ...
+            print("Error deleting all food items: \(error)")
         }
+    }
+    
+    static func deleteFood(food:Food) -> Bool?{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+
+        do {
+            let items = try context.fetch(fetchRequest) as! [NSManagedObject]
+
+            for item in items {
+                guard let uniqueID = item.value(forKey: "uniqueID") as? String else { return nil }
+                if uniqueID == food.uniqueID{
+                    context.delete(item)
+                    try context.save()
+                    return true
+                }
+                
+            }
+            
+        } catch {
+            
+            print("Error deleting individual food item: \(error)")
+        }
+        return false
     }
 }
 

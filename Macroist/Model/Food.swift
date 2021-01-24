@@ -8,6 +8,7 @@
 import Foundation
 //Make NSMANAGEDOBJECT or find another way for delete functionality
 class Food: Codable{
+    public var uniqueID     : String = ""
     public var name         : String = ""
     public var date         : String = ""
     public var calories     : Double = 0.0
@@ -22,6 +23,7 @@ class Food: Codable{
         self.protein    = protein
         self.carbs      = carbs
         self.fat        = fat
+        self.uniqueID   = toString()
     }
     init(name: String, date: String, calories: Double, protein: Double, carbs: Double, fat: Double) {
         self.name       = name
@@ -30,8 +32,17 @@ class Food: Codable{
         self.protein    = protein
         self.carbs      = carbs
         self.fat        = fat
+        self.uniqueID   = toString()
     }
-    
+    init(uniqueID: String, name: String, date: String, calories: Double, protein: Double, carbs: Double, fat: Double) {
+        self.uniqueID   = uniqueID
+        self.name       = name
+        self.date       = date
+        self.calories   = calories
+        self.protein    = protein
+        self.carbs      = carbs
+        self.fat        = fat
+    }
     func toString() -> String{
         return String(format: "%@ - %@: %.2f calories, %.2f protein, %.2f carbs, %.2f fat", date, name, calories, protein, carbs, fat)
     }
