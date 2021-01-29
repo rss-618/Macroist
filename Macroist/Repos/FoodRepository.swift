@@ -15,7 +15,7 @@ class FoodRepo {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let foodItem = NSEntityDescription.insertNewObject(forEntityName: "Food", into: context)
-        foodItem.setValue(food.uniqueID, forKey:"uniqueID")
+        foodItem.setValue(food.toString(), forKey:"uniqueID")
         foodItem.setValue(food.date, forKey:"date")
         foodItem.setValue(food.name, forKey: "name")
         foodItem.setValue(food.calories, forKey: "calories")
@@ -31,7 +31,40 @@ class FoodRepo {
             return false
         }
     }
+    
+    static func updateFoodItem(food: Food) -> Bool{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
 
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+
+        do {
+            let items = try context.fetch(fetchRequest) as! [NSManagedObject]
+
+            for item in items {
+                guard let uniqueID = item.value(forKey: "uniqueID") as? String else { return false }
+                if uniqueID == food.uniqueID{
+                    food.uniqueID = food.toString()
+                    item.setValue(food.uniqueID, forKey:"uniqueID")
+                    item.setValue(food.date, forKey:"date")
+                    item.setValue(food.name, forKey: "name")
+                    item.setValue(food.calories, forKey: "calories")
+                    item.setValue(food.protein, forKey: "protein")
+                    item.setValue(food.carbs, forKey: "carbs")
+                    item.setValue(food.fat, forKey: "fat")
+                    try context.save()
+                    return true
+                }
+            }
+            
+        } catch {
+            print("Error updating individual food item: \(error)")
+        }
+        return false
+    }
+    
     static func retrieveSavedFood() -> [Food]? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
@@ -92,7 +125,7 @@ class FoodRepo {
         }
     }
     
-    static func deleteFood(food:Food) -> Bool?{
+    static func deleteFood(food:Food) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
@@ -104,7 +137,7 @@ class FoodRepo {
             let items = try context.fetch(fetchRequest) as! [NSManagedObject]
 
             for item in items {
-                guard let uniqueID = item.value(forKey: "uniqueID") as? String else { return nil }
+                guard let uniqueID = item.value(forKey: "uniqueID") as? String else { return false }
                 if uniqueID == food.uniqueID{
                     context.delete(item)
                     try context.save()

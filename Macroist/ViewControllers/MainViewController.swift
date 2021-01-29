@@ -38,6 +38,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         getFoodItems()
     }
     
+    @IBAction func addButtonPress(_ sender: Any) {
+        redirectToAddMeal()
+    }
+    
     func addFoodItem(food: Food){
         foodItems.append(food)
         calcAndUpdateNutritionSum()
@@ -79,13 +83,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegue(withIdentifier: "mainToProfile", sender: self)
     }
     
+    func redirectToAddMeal(){
+        let animate = !NewMealViewController.isEdit
+        if animate {
+            self.performSegue(withIdentifier: "mainToAddMeal", sender: self)
+        } else{
+            self.performSegue(withIdentifier: "mainToEditMeal", sender: self)
+        }
+        
+    }
+    // maybe make a custom class for the table functions
     //MARK:- UITableView DataSource & Delegate
-      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         calcAndUpdateNutritionSum()
-          return self.foodItems.count
-      }
+        return self.foodItems.count
+    }
 
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodItem") as! FoodCell
 
@@ -97,25 +111,51 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.fatText.text       = String(format: .GRAM_FORMAT, foodItems[indexPath.row].fat)
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        // for iOS13, iOS14
+        if let swipeContainerView = tableView.subviews.first(where: { String(describing: type(of: $0)) == "_UITableViewCellSwipeContainerView" }) {
+          if let swipeActionPullView = swipeContainerView.subviews.first, String(describing: type(of: swipeActionPullView)) == "UISwipeActionPullView" {
+            swipeActionPullView.frame.size.height -= Constant.FOOD_INSET_TOP
+            swipeActionPullView.frame.origin.y    += Constant.FOOD_INSET_TOP
+
+          }
+        }
+        // for iOS12
+        tableView.subviews.forEach { subview in
+          if String(describing: type(of: subview)) == "UISwipeActionPullView" {
+            subview.frame.size.height -= Constant.FOOD_INSET_TOP
+            subview.frame.origin.y    += Constant.FOOD_INSET_TOP
+          }
+        }
       }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
             -> UISwipeActionsConfiguration? {
-            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
             // delete the item here
-                if !FoodRepo.deleteFood(food: self.foodItems[indexPath.row])!{
-                    let alert = UIAlertController(title: .ERROR_DELETING, message: nil, preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: .OKAY, style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                self.foodItems.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                completionHandler(true)
+            if !FoodRepo.deleteFood(food: self.foodItems[indexPath.row]){
+                let alert = UIAlertController(title: .ERROR_DELETING, message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: .OKAY, style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.foodItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
         }
-        let cgImageX =  UIImage(systemName: "trash")?.cgImage
-        deleteAction.image = OriginalImageRender(cgImage: cgImageX!)
+        let updateAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
+            NewMealViewController.isEdit = true
+            NewMealViewController.prefillFoodObject = self.foodItems[indexPath.row]
+            self.redirectToAddMeal()
+        }
+        let deleteImage =  UIImage(systemName: "trash")?.cgImage
+        deleteAction.image = OriginalImageRender(cgImage: deleteImage!)
         deleteAction.backgroundColor = UIColor.init(red: .zero, green: .zero, blue: .zero, alpha: .zero)
-        return UISwipeActionsConfiguration.init(actions: [deleteAction])
+        let updateImage =  UIImage(systemName: "pencil.circle")?.cgImage
+        updateAction.image = OriginalImageRender(cgImage: updateImage!)
+        updateAction.backgroundColor = UIColor.init(red: .zero, green: .zero, blue: .zero, alpha: .zero)
+        return UISwipeActionsConfiguration.init(actions: [deleteAction, updateAction])
     }
       
 }

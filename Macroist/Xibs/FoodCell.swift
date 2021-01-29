@@ -17,7 +17,7 @@ class FoodCell: UITableViewCell{
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: Constant.FOOD_INSET_SIDE, left: Constant.FOOD_INSET_TOP, bottom: .zero, right: Constant.FOOD_INSET_SIDE))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: Constant.FOOD_INSET_TOP, left: Constant.FOOD_INSET_SIDE, bottom: .zero, right: Constant.FOOD_INSET_SIDE))
         contentView.layer.cornerRadius = 10
 //        contentView.layer.shadowColor = #colorLiteral(red: 0.05560452491, green: 0.05528203398, blue: 0.05585758388, alpha: 1)
 //        contentView.layer.shadowRadius = Constant.SHADOW_RADIUS

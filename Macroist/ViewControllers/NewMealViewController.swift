@@ -9,6 +9,10 @@ import SwiftUI
 import CoreData
 
 class NewMealViewController: UIViewController{
+    
+    static var isEdit = false
+    static var prefillFoodObject: Food = Food()
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var foodNameInput: UITextField!
@@ -19,9 +23,15 @@ class NewMealViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         configureButtons()
         self.hideKeyboardWhenTappedAround()
+        if NewMealViewController.isEdit{
+            foodNameInput.text  = NewMealViewController.prefillFoodObject.name
+            caloriesInput.text  = String(NewMealViewController.prefillFoodObject.calories)
+            carbsInput.text     = String(NewMealViewController.prefillFoodObject.carbs)
+            proteinInput.text   = String(NewMealViewController.prefillFoodObject.protein)
+            fatInput.text       = String(NewMealViewController.prefillFoodObject.fat)
+        }
     }
     
     func configureButtons(){
@@ -37,9 +47,21 @@ class NewMealViewController: UIViewController{
         doneButton.layer.shadowOffset = CGSize(width: Constant.SHADOW_OFFSET_X, height: Constant.SHADOW_OFFSET_Y)
         doneButton.layer.shadowOpacity = Constant.SHADOW_OPACITY
     }
+    
+    func resetStaticVars(){
+        NewMealViewController.isEdit = false
+        NewMealViewController.prefillFoodObject = Food()
+    }
+    
+    func close(){
+        let animate = !NewMealViewController.isEdit
+        self.resetStaticVars()
+        navigationController?.popViewController(animated: animate)
+        dismiss(animated: animate, completion: nil)
+    }
+    
     @IBAction func cancelPressed(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        self.close()
     }
     
     @IBAction func donePressed(_ sender: Any) {
@@ -56,10 +78,23 @@ class NewMealViewController: UIViewController{
                                  protein: protein,
                                  carbs: carbs,
                                  fat: fat)
-            let result = FoodRepo.saveFoodItem(food: food)
+            let result: Bool
+            // Edit state needs different logic
+            if NewMealViewController.isEdit{
+                // add edit logic
+                food.uniqueID = NewMealViewController.prefillFoodObject.uniqueID
+                result = FoodRepo.updateFoodItem(food: food)
+            } else { // for a fresh save
+                result = FoodRepo.saveFoodItem(food: food)
+            }
+            // Handle press state
             if result == true{
-                navigationController?.popViewController(animated: true)
-                dismiss(animated: true, completion: nil)
+                self.close()
+            }
+            else{
+                let alert = UIAlertController(title: .ERROR_DELETING, message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: .OKAY, style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         else{

@@ -23,7 +23,6 @@ class Food: Codable{
         self.protein    = protein
         self.carbs      = carbs
         self.fat        = fat
-        self.uniqueID   = toString()
     }
     init(name: String, date: String, calories: Double, protein: Double, carbs: Double, fat: Double) {
         self.name       = name
@@ -32,7 +31,6 @@ class Food: Codable{
         self.protein    = protein
         self.carbs      = carbs
         self.fat        = fat
-        self.uniqueID   = toString()
     }
     init(uniqueID: String, name: String, date: String, calories: Double, protein: Double, carbs: Double, fat: Double) {
         self.uniqueID   = uniqueID

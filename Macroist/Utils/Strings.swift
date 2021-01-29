@@ -21,13 +21,15 @@ extension String{
     static let ERROR_DELETING           = "Error Deleting Item."
     static let OKAY                     = "Okay"
     
-    //Food Formatting        //Food Formatting
+    //Food Formatting
     static let CALORIE_FORMAT           = "%.1f cals"
     static let GRAM_FORMAT              = "%.1fg"
 
 
-    //Date Formatting        //Date Formatting
-    static let DATE_FORMAT              = "MM/dd/yyyy"
+    //Date Formatting
+    static let DATE_FORMAT              = "MM/dd/yyyy HH:mm:ss"
     
     //General
-    static let EMPTY                    = ""}
+    static let EMPTY                    = ""
+    static let SPACE                    = " "
+}

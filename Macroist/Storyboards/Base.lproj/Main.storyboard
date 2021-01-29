@@ -349,7 +349,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chz-sg-5pa"/>
-                                    <segue destination="MMI-PZ-9v2" kind="presentation" modalPresentationStyle="fullScreen" id="6V6-VH-GMb"/>
+                                    <action selector="addButtonPress:" destination="25v-ed-Hu9" eventType="touchUpInside" id="fIB-UL-ecB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -379,6 +379,8 @@
                         <outlet property="totalFat" destination="uJ3-ne-AO6" id="FUb-za-HCY"/>
                         <outlet property="totalProtein" destination="XJp-3y-wFk" id="i6l-kW-raH"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainToProfile" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="pl1-ej-jQ5"/>
+                        <segue destination="MMI-PZ-9v2" kind="presentation" identifier="mainToAddMeal" modalPresentationStyle="fullScreen" id="uB6-gt-n9O"/>
+                        <segue destination="MMI-PZ-9v2" kind="presentation" identifier="mainToEditMeal" animates="NO" modalPresentationStyle="fullScreen" id="ggS-Am-T3W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3b-0L-m7t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -638,6 +640,9 @@
             <point key="canvasLocation" x="1491.304347826087" y="86.383928571428569"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ggS-Am-T3W"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
